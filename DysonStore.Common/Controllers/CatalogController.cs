@@ -1,29 +1,26 @@
 using DysonStore.Common.Models;
 using DysonStore.Common.Models.DTOs;
 using DysonStore.Common.Repositories;
-using Humanizer.Localisation;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using System.Diagnostics;
 
 namespace DysonStore.Common.Controllers
 {
-    public class HomeController : Controller
+    public class CatalogController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IHomeRepository _homeRepository;
+        private readonly ILogger<CatalogController> _logger;
+        private readonly IProductRepository _productRepository;
 
-        public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository)
+        public CatalogController(ILogger<CatalogController> logger, IProductRepository productRepository)
         {
             _logger = logger;
-            _homeRepository = homeRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<IActionResult> Index(int categoryId = 0)
         {
-            IEnumerable<Product> products = await _homeRepository.GetProducts(categoryId);
-            IEnumerable<Category> categories = await _homeRepository.Categories();
+            IEnumerable<Product> products = await _productRepository.GetProducts(categoryId);
+            IEnumerable<Category> categories = await _productRepository.Categories();
             ProductDisplayView bookModel = new ProductDisplayView
             {
                 Products = products,
@@ -37,7 +34,7 @@ namespace DysonStore.Common.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var product = await _homeRepository.GetProductAsync(id);
+            var product = await _productRepository.GetProductAsync(id);
 
             return View(product);
         }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DysonStore.Common.Repositories
 {
-    public class HomeRepository : IHomeRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _db;
 
-        public HomeRepository(ApplicationDbContext db)
+        public ProductRepository(ApplicationDbContext db)
         {
             _db = db;
         }

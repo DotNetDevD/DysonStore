@@ -33,7 +33,7 @@
         async function add(productId) {
             var usernameEl = document.getElementById("username");
             if (usernameEl == null) {
-                window.location.href = "/Home/Index";
+                window.location.href = "/Catalog/Index";
             }
             try {
                 var response = await fetch(`/Cart/AddItem?productId=${productId}`);

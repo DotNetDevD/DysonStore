@@ -6,7 +6,7 @@ namespace DysonStore.Common.Extensions
     {
         public static void AddRepositoryDependecies(this IServiceCollection services)
         {
-            services.AddTransient<IHomeRepository, HomeRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<IUserOrderRepository, UserOrderRepository>();
         }

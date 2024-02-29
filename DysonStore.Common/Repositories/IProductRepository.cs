@@ -2,7 +2,7 @@
 
 namespace DysonStore.Common.Repositories
 {
-    public interface IHomeRepository
+    public interface IProductRepository
     {
         Task<IEnumerable<Product>> GetProducts(int genreId = 0);
         Task<IEnumerable<Category>> Categories();

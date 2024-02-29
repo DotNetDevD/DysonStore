@@ -43,7 +43,7 @@ namespace DysonStore.Common.Controllers
             bool isCheckedOut = await _cartRepo.DoCheckout();
             if (!isCheckedOut)
                 throw new Exception("Something happen in server side");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalog");
         }
 
     }
